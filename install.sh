@@ -1,9 +1,6 @@
 #!/usr/bin/bash
 
 
-git clone https://github.com/ZeeoneOfficial/node_modules
-rm -rf session.json 
-rm -rf store.json
-npm start
+npm i -g pm2 && pm2 start zeeone.js && pn2 save && pm2 logs
 
 echo "All dependencies have been installed, please run the command \"npm start\" to immediately start the script"
