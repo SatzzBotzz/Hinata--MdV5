@@ -57,8 +57,6 @@ const db_respon_list = JSON.parse(fs.readFileSync('./database/list-message.json'
 
 pp_bot = fs.readFileSync(thumbnail)
 qris = fs.readFileSync(donasi)
-nepoi = fs.readFileSync(neop)
-gipalok = fs.readFileSync(gip)
 lang = global.language 
 moment.tz.setDefault("Asia/Jakarta").locale("id");
 
@@ -182,7 +180,6 @@ autorespond:false,
 } catch (err) {
 console.log(err)
 }
-
 
 for (let jid of mentionUser) {
 let user = global.db.data.users[jid]
@@ -851,29 +848,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
         await alpha.send5ButImg(from, lang.tos(ownernomer) , `© ${ownername}`,qris, but , { userJid: m.chat, quoted: m })
     }
  break
- //nekopoi function\\    
- case 'nekopoi':case 'nekoapp':case 'nekopoiapp':case 'kucingpeduli': {
- var but = [
-          {
-            "urlButton": {
-              "displayText": "MediaFire",
-              "url": "https://www.mediafire.com/file/vr0nkkpkvqo6lcd/nekopoi.terbaru.mei.zip/file"
-            }
-          },
-          {
-            "quickReplyButton": {
-              "displayText": "Get Passwords",
-"id": 'pwwnye'
-            }
-          }
-        ]
-        await alpha.send5ButImg(from, `Tekan Button Url Di Bawah Untuk Link` , `© ${ownername}`,nepoi, but , { userJid: m.chat, quoted: m })
-    }
- break
- case 'pwwnye': {
- reply(`PASSWORDS : 2022`)
- }
-break
+      
 //Random Anime
 				case 'cry':case 'kill':case 'hug':case 'pat':case 'lick':case 'kiss':case 'bite':case 'yeet':case 'neko':case 'bully':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'awoo':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'highfive':case 'shinobu':case 'megumin':case 'handhold':
 					reply(lang.wait())
@@ -1203,7 +1178,7 @@ reply(lang.ok())
 }
 break
             case 'join': {
-                if (!isCreator && isPremium) return reply(lang.ownerOnly())
+                if (!isCreator) return reply(lang.ownerOnly())
                 if (!text) return reply(lang.JoinGc())
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(lang.erorLink())
                 reply(lang.wait())
@@ -1585,7 +1560,7 @@ const buttojns = [
 						await alpha.send5ButLoc(from, lang.menunya(salam, pushname, botname) , `© ${ownername}`,pp_bot, [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "List Command","id": 'command'}}], { userJid: m.chat, quoted: m } )
 							}
 						if(typemenu == 'templateTenor'){
-							alpha.send5ButGif(from, lang.menunya(salam, pushname, botname) , `© ${ownername}` ,gipalok, [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "List Command","id": 'command'}}] , {quoted: m})
+							alpha.send5ButGif(from, lang.menunya(salam, pushname, botname) , `© ${ownername}` ,pp_bot, [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "List Command","id": 'command'}}] , {quoted: m})
 						 }
 						if(typemenu == 'katalog'){
 							alpha.sendKatalog(m.chat, "ALL MENU BOT", lang.listMenu(time, salam, pushname, prefix), pp_bot, {quoted:m})
@@ -3855,33 +3830,31 @@ ${prefix}nuliskiri Subscribe Ya https://youtube.com/c/zeeoneofc`)
                 })
             }
             break
-         
-case 'tutro': {
-	reply(`njirr🗿`)
-	}
-	break
+            
+            case 'nekoapp': case 'nekopoiapp': case 'appnekopoi': case 'kucingpeduli': {
+            let gam = await getBuffer(picak + 'NEKOPOI')
+            var but = [
+				{
+					"urlButton": {
+						"displayText": "NEKOPOI",
+						"url": "https://www.mediafire.com/file/vr0nkkpkvqo6lcd/nekopoi.terbaru.mei.zip/file"
+						}
+					}
+				]
+				await alpha.send5ButImg(from, lang.nekopoi(prefix), `PASSWORD : 2022`,gam, but , { userJid: m.chat, quoted: m })
+				}
+            break
+
  default:
- //anti-tag by SatganzDevs
-const listTag = [`${global.ownertag}@s.whatsapp.net`]
+ const listTag = [`${global.ownertag}@s.whatsapp.net`]
 const partiNum = (m.mtype === 'extendedTextMessage') ? m.message.extendedTextMessage.contextInfo.participant : ''
 //anti-tag 2 by SatganzDevs
 if (listTag.includes(partiNum)) {
-alpha.sendButMessage(from, 'Sok Asik Lu Tag Tag Owner Gwejh', `© ${ownername}`, [{buttonId: 'Oke', buttonText: {displayText: 'Oke'}, type: 1},{buttonId: 'tutro', buttonText: {displayText: '                                          aku gay'}, type: 1}], {quoted: fgif})
+alpha.sendButMessage(from, `Don't Tag My Owner Bro 😠`, `© ${ownername}`, [{buttonId: 'Oke', buttonText: {displayText: 'Oke'}, type: 1}], {quoted: fgif})
 }
 //anti-tag 3 by SatganzDevs
-if (budy.includes(`${global.ownertag}`)) {
-				alpha.sendButMessage(from, 'Sok Asik Lu Tag Tag Owner Gwejh', `© ${ownername}`, [{buttonId: 'Oke', buttonText: {displayText: 'Oke'}, type: 1},{buttonId: 'tutro', buttonText: {displayText: '                                          aku gay'}, type: 1}], {quoted: fgif})
-}
-/*𝙰𝚗𝚝𝚒 𝚝𝚊𝚐 𝙱𝚘𝚝 𝚋𝚢 𝚜𝚊𝚝𝚐𝚊𝚗𝚣𝙳𝚎𝚟𝚜*/
-const listoTag = [`6281268248904@s.whatsapp.net`]
-const partioNum = (m.mtype === 'extendedTextMessage') ? m.message.extendedTextMessage.contextInfo.participant : ''
-//anti-tag 2 by SatganzDevs
-if (listTag.includes(partioNum)) {
-alpha.sendButMessage(from, 'Sok Asik Lu Tag Tag  Gwejh', `© ${ownername}`, [{buttonId: 'Oke', buttonText: {displayText: 'Oke'}, type: 1},{buttonId: 'tutro', buttonText: {displayText: '                                          aku gay'}, type: 1}], {quoted: fgif})
-}
-//anti-tag 3 by SatganzDevs
-if (budy.includes(`6281268248904`)) {
-				alpha.sendButMessage(from, 'Sok Asik Lu Tag Tag  Gwejh', `© ${ownername}`, [{buttonId: 'Oke', buttonText: {displayText: 'Oke'}, type: 1},{buttonId: 'tutro', buttonText: {displayText: '                                          aku gay'}, type: 1}], {quoted: fgif})
+if (budy.includes(`${global.ownertag}`)) 
+				alpha.sendButMessage(from, `Don't Tag My Owner Bro 😠`, `© ${ownername}`, [{buttonId: 'Oke', buttonText: {displayText: 'Oke'}, type: 1}], {quoted: fgif})
 }
 if (budy.startsWith('=>')) {
 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
